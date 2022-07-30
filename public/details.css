@@ -20,9 +20,11 @@ input {
     width: 90%;
 }
 
-#proPic{
+#proPicholder{
     width: 250px;
-    height:auto;
+    height:250px;
+    border: 1px solid black;
+    margin-bottom: 20px;
 }
 
 .gender {
