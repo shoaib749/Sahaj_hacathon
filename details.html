@@ -32,11 +32,11 @@
     <input type="text" id="ageInput"> <br> -->
         <label for="gender" id="gender"> Gender:&nbsp;</label> <br>
         <div class="gender">
-            <input type="radio" name="gender" >Male
-            <input type="radio" name="gender" >Female
-            <input type="radio" name="gender" >Other
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female
+            <input type="radio" name="gender">Other
         </div>
-         <br>
+        <br>
 
         <label for="guardianName" id="guardianName"> Guardian's Full Name :&nbsp;</label>
         <input type="text" id="guardianNameInput"> <br>
@@ -51,12 +51,30 @@
 
     </form>
 
-    <div class="documents">
-        <div id="addDocs">
-            <input type="file">
+    <div id="documents">
+        <div class="addDocs">
+            <input type="file" id="firstChooseDocs">
         </div>
-        
+
     </div>
 
+
+
+    <script>
+        var documents = document.getElementById('documents');
+        var firstChooseDocs = document.getElementById('firstChooseDocs');
+        firstChooseDocs.addEventListener('change',createDocsDiv);
+        
+        function createDocsDiv() {
+            var div = document.createElement('div');
+            div.classList.add('addDocs');
+            var inp = document.createElement('input');
+            inp.setAttribute('type', 'file');
+            inp.setAttribute('class','chooseDocs');
+            div.appendChild(inp);
+            documents.appendChild(div);
+            inp.addEventListener('change',createDocsDiv);
+        }
+    </script>
 </body>
 </html>

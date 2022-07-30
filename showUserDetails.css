@@ -2,6 +2,10 @@ body{
     background-color: azure;
 }
 
+img {
+    border-radius: 50%;
+  }
+
 form{
     border: 1px solid black;
     display: flex;
@@ -18,18 +22,6 @@ input{
     width: 90%;
 }
 
-.gender{
-    display: flex;
-}
-
-#documents{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.addDocs{
-    margin-top: 20px;
+#loginButton{
+    margin-top: 10px;
 }
