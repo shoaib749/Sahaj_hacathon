@@ -1,8 +1,8 @@
-body{
+body {
     background-color: azure;
 }
 
-form{
+form {
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -14,15 +14,15 @@ form{
     height: auto;
 }
 
-input{
+input {
     width: 90%;
 }
 
-.gender{
+.gender {
     display: flex;
 }
 
-#documents{
+#documents {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,20 @@ input{
     justify-content: center;
 }
 
-.addDocs{
+.addDocs {
+    margin-top: 20px;
+}
+
+#fileContainer {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+#filename {
+    width: 250px;
+}
+
+#selectButton{
     margin-top: 20px;
 }
