@@ -29,17 +29,17 @@ const L_username  = document.getElementById("userNameInput");
 const L_password =  document.getElementById("passwordInput");
 const L_submit =    document.getElementById("loginButton");
 
-L_submit.addEventListener('click',authUser);
-function authUser(){
+L_submit.addEventListener('click',authDoctor);
+function authDoctor(){
      const dbRef = ref(db);
-    //  if(isEmptyOrSpace(L_username.value)||isEmptyOrSpace(L_password.value)){
-    //      alert("Enter username and Password");
-    //      return;
-    //  }
-     if (!Validation()) {
+     // if(isEmptyOrSpace(L_username.value)||isEmptyOrSpace(L_password.value)){
+     //     alert("Enter username and Password");
+     //     return;
+     // }
+     if(!Validation()){
         return;
-    }
-     get(child(dbRef, "PatientList/" + L_username.value))
+     }
+     get(child(dbRef, "DoctorList/" + L_username.value))
          .then((snapshot) => {
              if (snapshot.exists()) {
                  let dbpass = decPass(snapshot.val().password);
@@ -65,18 +65,15 @@ function authUser(){
  function decPass(pass){
      var pass12 = CryptoJS.AES.decrypt(pass,L_password.value);
      return pass12.toString(CryptoJS.enc.Utf8);
-<<<<<<< Updated upstream:index_login.js
- }
-=======
  }
 
- function Validation() {
+ function Validation(int s) {
     // let nameregex = /^[a-zA-Z\s]+$/;
     // let emailregex = /^[a-zA-Z0-9]+@$/;
     let userregex = /^[a-zA-Z0-9]{5,}$/;
     let passregex = /^[a-zA-Z0-9]{5,15}$/;
-    if (isEmptyOrSpace(L_username.value) || isEmptyOrSpace(L_password.value)) {
-        alert("Enter Username and Password");
+    if (isEmptyOrSpace(L_username.val) || isEmptyOrSpace(L_password.val)) {
+        alert("Enter Valid Username and Password");
         return false;
     }
     // if (!userregex.test(L_username.value)) {
@@ -93,4 +90,3 @@ function authUser(){
 function isEmptyOrSpace(str) {
     return str == null || str.match(/^ *$/) !== null;
 }
->>>>>>> Stashed changes:public/index_login.js
