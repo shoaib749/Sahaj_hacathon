@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="details.css">
     <form id="userDetailsForm" action="">
         <h2>Patient Details</h2>
+        
         <label for="profilePic">Select profile picture:</label> <br>
-        <input type="file" id="profilePicInput" accept="image/jpeg,image/png,image/jpg"> <br>
+        <button id="selPropic">Select profile picture</button> <br>
+
         <label for="name">Name:</label>
         <input type="text" id="nameInput"> <br>
 
@@ -32,15 +34,13 @@
         <label for="bloodGroup" id="bloodGroup"> Blood Group :&nbsp;</label>
         <input type="text" id="bloodGroupInput"> <br>
 
-        <!-- <label for="age" id = "age"> Age:&nbsp;</label>
-    <input type="text" id="ageInput"> <br> -->
         <label for="gender" id="gender"> Gender:&nbsp;</label> <br>
         <div class="gender">
             <input type="radio" name="gender">Male
             <input type="radio" name="gender">Female
             <input type="radio" name="gender">Other
         </div>
-        <br>
+        <br> <br>
 
         <label for="guardianName" id="guardianName"> Guardian's Full Name :&nbsp;</label>
         <input type="text" id="guardianNameInput"> <br>
@@ -68,6 +68,13 @@
 
 
     <script>
+
+        imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            proPic.src = URL.createObjectURL(file)
+        }
+        }
         // var documents = document.getElementById('documents');
         // var firstChooseDocs = document.getElementById('firstChooseDocs');
         // firstChooseDocs.addEventListener('change',createDocsDiv);

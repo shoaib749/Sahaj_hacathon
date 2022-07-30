@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
     background-color: azure;
+    font-family: 'Montserrat', sans-serif;
 }
 
 form {
@@ -16,6 +18,11 @@ form {
 
 input {
     width: 90%;
+}
+
+#proPic{
+    width: 250px;
+    height:auto;
 }
 
 .gender {
