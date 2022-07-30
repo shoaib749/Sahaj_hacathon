@@ -1,0 +1,17 @@
+body{
+    background-color: azure;
+}
+
+form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 35%;
+    width: 360px;
+    height: auto;
+}
+
+input{
+    width: 90%;
+}
