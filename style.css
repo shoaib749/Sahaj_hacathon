@@ -21,3 +21,10 @@ input{
 #loginButton{
     margin-top: 10px;
 }
+
+#docLoginButton{
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
