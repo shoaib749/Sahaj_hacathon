@@ -1,11 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAG5iICEez2P75v-hAWJb4wPBfB-CP15OI",
   authDomain: "dums-d3398.firebaseapp.com",
@@ -24,6 +20,10 @@ const analytics = getAnalytics(app);
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js"
 const db = getDatabase();
 
+//importing username
+// import {username} from "./userSession.js";
+// document.cookie=L_username;
+// var session = document.cookie;
 //init for login page
 const L_username  = document.getElementById("userNameInput");
 const L_password =  document.getElementById("passwordInput");
@@ -44,6 +44,8 @@ function authUser(){
                  console.log(dbpass+" from database");
                  // console.log(L_password.value);
                  if(dbpass == L_password.value){
+                    // username = L_username.value;
+                    localStorage.setItem("username",L_username.value );
                      login(snapshot.val());
                  }
                  else{
@@ -63,3 +65,4 @@ function authUser(){
      var pass12 = CryptoJS.AES.decrypt(pass,L_password.value);
      return pass12.toString(CryptoJS.enc.Utf8);
  }
+
