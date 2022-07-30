@@ -21,9 +21,10 @@ input {
 }
 
 #proPicholder{
-    width: 250px;
-    height:250px;
+    width: 100px;
+    height:100px;
     border: 1px solid black;
+    border-radius: 51px;
     margin-bottom: 20px;
 }
 

@@ -15,29 +15,29 @@
         
         <label for="profilePic">Select profile picture:</label> <br>
         <div id="proPicholder">
-            
+
         </div>
         <button id="selPropic">Select profile picture</button> <br>
 
         <label for="name">Name:</label>
         <input type="text" id="nameInput"> <br>
 
-        <label for="dob"> DOB:&nbsp;</label>
+        <label for="dob"> DOB:</label>
         <input type="dob" id="dobInput"> <br>
 
-        <label for="phone" id="phone"> Phone Number:&nbsp;</label>
+        <label for="phone" id="phone"> Phone Number:</label>
         <input type="phone" id="phoneNoInput"> <br>
 
         <label for="email">E-mail:</label>
         <input type="text" id="emailInput"> <br>
 
-        <label for="adharNo" id="adharNo"> Adhar Number:&nbsp;</label>
+        <label for="adharNo" id="adharNo"> Adhar Number:</label>
         <input type="adharNo" id="adharNoInput"> <br>
 
-        <label for="bloodGroup" id="bloodGroup"> Blood Group :&nbsp;</label>
+        <label for="bloodGroup" id="bloodGroup"> Blood Group :</label>
         <input type="text" id="bloodGroupInput"> <br>
 
-        <label for="gender" id="gender"> Gender:&nbsp;</label> <br>
+        <label for="gender" id="gender"> Gender:</label> <br>
         <div class="gender">
             <input type="radio" name="gender">Male
             <input type="radio" name="gender">Female
@@ -45,13 +45,13 @@
         </div>
         <br> <br>
 
-        <label for="guardianName" id="guardianName"> Guardian's Full Name :&nbsp;</label>
+        <label for="guardianName" id="guardianName"> Guardian's Full Name :</label>
         <input type="text" id="guardianNameInput"> <br>
 
-        <label for="guardianPhone" id="guardianPhone"> Guardian's Phone :&nbsp;</label>
+        <label for="guardianPhone" id="guardianPhone"> Guardian's Phone :</label>
         <input type="text" id="guardianPhoneInput"> <br>
 
-        <label for="guardianPhone" id="guardianPhone"> Guardian's E-mail :&nbsp;</label>
+        <label for="guardianPhone" id="guardianPhone"> Guardian's E-mail :</label>
         <input type="text" id="guardianEmailInput"> <br>
 
         <h4>Upload documents</h4>
@@ -71,13 +71,6 @@
 
 
     <script>
-
-        imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-            proPic.src = URL.createObjectURL(file)
-        }
-        }
         // var documents = document.getElementById('documents');
         // var firstChooseDocs = document.getElementById('firstChooseDocs');
         // firstChooseDocs.addEventListener('change',createDocsDiv);
