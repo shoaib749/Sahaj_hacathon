@@ -45,8 +45,7 @@ function registerUser() {
                       {
                           Name: S_fullname.value,
                           username: S_username.value,
-                          password: encPass(),
-                          flag : 0
+                          password: encPass()
                       })
                       .then(() => {
                           // fullname.value="";

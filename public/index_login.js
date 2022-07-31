@@ -17,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 //for firebase
-import { getDatabase, ref, set, child, get,update } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js"
+import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js"
 const db = getDatabase();
 
 //importing username
@@ -60,24 +60,8 @@ function authUser(){
          });
  }
  function login(user){
-    const dbRef = getDatabase();
-    var flag ;
-    window.location="Details.html";
      sessionStorage.setItem('user',JSON.stringify(user));
-    //  get(child(dbRef,"PatientList/"+L_username.value))
-    //  .then((snapshot)=>{
-    //     if(flag == 0){
-    //         window.location="Details.html";
-    //     }else{
-    //         update(ref(db,"PatientList/" + L_username.value),{
-    //             flag : 1
-    //         }).then(()=>{
-    //             console.log(flag);
-    //         })
-    //         window.location="showUserDetails.html";
-    //     }
-    //  })
-     
+     window.location="Details.html";
  }
  
  function decPass(pass){
