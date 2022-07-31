@@ -58,7 +58,7 @@ input {
     margin-top: 20px;
 }
 
-.uploadedDocuments{
+#uploadedDocuments{
     display: flex;
     align-items: center;
     flex-direction: column;

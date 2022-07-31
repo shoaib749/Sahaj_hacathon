@@ -105,8 +105,17 @@ async function UploadProcess() {
                     .then((downloadURL) => {
                          console.log(downloadURL);
                          saveUrlToDB(downloadURL);
+                         displayDocuments(downloadURL);
                     });
           });
+
+}
+
+function displayDocuments(url){
+     var uploadedDocHolder = document.getElementById('uploadedDocuments');
+     var embed = document.createElement('embed');
+     embed.src = url;
+     uploadedDocHolder.appendChild(embed);
 }
 function saveUrlToDB(link) {
      var D_name = name.value;
