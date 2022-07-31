@@ -54,11 +54,11 @@ B_select.onclick = function () {
 }
 submit.onclick = function () {
      //Check for Validations
-     if(!Validation()){
-          // alert("Accepted");
-          console.log("Not Accepted");
-          return;
-     }
+     // if(!Validation()){
+     //      // alert("Accepted");
+     //      console.log("Not Accepted");
+     //      return;
+     // }
      UploadProcess();
      // window.location = "showUserDetails.html";
      UploadProcess_image();
