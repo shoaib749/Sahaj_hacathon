@@ -80,7 +80,7 @@ function registerUser() {
     }
     if (!nameregex.test(S_fullname.value)) {
         alert("The Name should only contain alphabets!");
-        return false
+        return false;
     }
 
     if (!phoneregex.test(S_username.value)) {

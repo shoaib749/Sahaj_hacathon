@@ -200,16 +200,16 @@ function Validation() {
      //     return false;
      // }
 
-     if (!nameregex.test(name.value) && !nameregex.test(guardianName.value)) {
+     if (!nameregex.test(name.value) && !nameregex.test(guardianName.value)&& name==guardianName) {
          alert("The Name should only contain alphabets!");
          return false
      }
-     if (!phoneregex.test(phone.value) && !phoneregex.test(guardianPhone.value)) {
+     if (!phoneregex.test(phone.value) && !phoneregex.test(guardianPhone.value) && phone==guardianName) {
          alert("Enter the valid phone number");
          return false;
      }
  
-     if (!emailregex.test(email.value) && !emailregex.test(guardianEmail.value)) {
+     if (!emailregex.test(email.value) && !emailregex.test(guardianEmail.value)&& email==guardianEmail) {
          alert("Enter a valid email");
          return false;
      }
