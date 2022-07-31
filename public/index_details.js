@@ -39,10 +39,7 @@ const guardianName = document.getElementById("guardianNameInput");
 const guardianPhone = document.getElementById("guardianPhoneInput");
 const guardianEmail = document.getElementById("guardianEmailInput");
 const submit = document.getElementById("save");
-const consultDoctor=document.getElementById("consultedDoctorInput");
-const treatmentdate=document.getElementById("treatmentDateInput");
-const diseasecaused=document.getElementById("diseaseCausedInput");
-const additonalinformation=document.getElementById("additonalInformation_Input");
+
 
 //
 const imgProfile = document.getElementById("proPicholder");
@@ -62,7 +59,7 @@ submit.onclick = function () {
      //      console.log("Not Accepted");
      //      return;
      // }
-     // UploadProcess();
+     UploadProcess();
      // window.location = "showUserDetails.html";
      UploadProcess_image();
       UploadProcess();
@@ -80,7 +77,8 @@ input.onchange = e => {
 
 //genrating QR code 
 function  generate() {
-     var data = email.value;
+     var type_url = `https://dums-d3398.web.app/showUserDetails.html?username=${localStorage.getItem("username")}`;
+     var data = type_url;
      console.log(data);
      var url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data}`;
      console.log(url);
@@ -156,11 +154,7 @@ function saveUrlToDB(link) {
           PhoneNo:D_phoneNo,
           QRlink: generate(),
           DocLink: link,
-          ProfilePic : profileLink,
-          ConsultedDoctor : CD_Name,
-          DateOfTreatment :Dot,
-          Diseasecaused : DiseaseCaused,
-          AdditonalInformation :AddInfo
+          ProfilePic : profileLink 
      })
      .then(()=>{
           alert("Data Added successfully");
@@ -240,14 +234,14 @@ function Validation() {
      let adharregex=/^[0-9]{12}$/;
      // let profileregex=/\.jpe?g$/i;
  
-     if (isEmptyOrSpace(name.value) || isEmptyOrSpace(dob.value) || 
-     isEmptyOrSpace(phone.value) || isEmptyOrSpace(email.value) || 
-     isEmptyOrSpace(adhar.value) || isEmptyOrSpace(bloodgroup.value) ||
-     isEmptyOrSpace(guardianName.value) || isEmptyOrSpace(guardianPhone.value) || 
-     isEmptyOrSpace(guardianEmail.value)) {
-         alert("Enter all the details ");
-         return false;
-     }
+     // if (isEmptyOrSpace(name.value) || isEmptyOrSpace(dob.value) || 
+     // isEmptyOrSpace(phone.value) || isEmptyOrSpace(email.value) || 
+     // isEmptyOrSpace(adhar.value) || isEmptyOrSpace(bloodgroup.value) ||
+     // isEmptyOrSpace(guardianName.value) || isEmptyOrSpace(guardianPhone.value) || 
+     // isEmptyOrSpace(guardianEmail.value)) {
+     //     alert("Enter all the details ");
+     //     return false;
+     // }
 
      if (!nameregex.test(name.value) && !nameregex.test(guardianName.value)&& name==guardianName) {
          alert("The Name should only contain alphabets!");
@@ -272,10 +266,10 @@ function Validation() {
           alert("Enter a valid blood group");
           return false;
       }
-     //  if(document.querySelector('input[name="gender"]:checked').value==false){
-     //      alert("Select the gender");
-     //      return false;
-     //  }
+      if(document.querySelector('input[name="gender"]:checked').value==false){
+          alert("Select the gender");
+          return false;
+      }
      //validation for gender are remaining
 
      return true;

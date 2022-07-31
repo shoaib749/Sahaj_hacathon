@@ -61,7 +61,7 @@ function authUser(){
  }
  function login(user){
      sessionStorage.setItem('user',JSON.stringify(user));
-     window.location="showUserDetails.html";
+     window.location="Details.html";
  }
  
  function decPass(pass){

@@ -3,20 +3,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./index_showDeatils.js" type="module"></script>
     <title>Document</title>
+    <link rel="stylesheet" href="doctorView.css">
 </head>
 <body>
-
-    <link rel="stylesheet" href="showUserDetails.css">
-
+    
+    
 <form id = "showUserDetails"action="">
     <h2>Patient Details</h2>
 
     <img src="" alt="Patient's Profile" width="150" height="150"> <br>
-
-    <label for="patientName2" >Your QR Code :&nbsp;</label>
-    <img src="" id="qrId" alt="QR" width="150" height="150"> <br>
 
     <label for="patientName2" >Name :&nbsp;</label>
     <table  >
@@ -42,7 +38,7 @@
     <label for="patientGender">Gender :&nbsp;</label>
     <table>
         <tr>
-            <td id="patientGender2">Gender</td>
+            <td id="patientGender2"> </td>
         </tr>
     </table> <br>
 
@@ -88,12 +84,13 @@
         </tr>
     </table> <br> <br>
 
-    <h4>Uploaded Documents</h4>
+    <h4><br>Available Documents</b4></h4>
     <div id="documents">
-      
+        <div id="fileName">
+        </div>
     </div> <br>
 
-    <!-- <label for="document" id="document"> Details About Documents :</label> <br>
+    <label for="document" id="document"> Details About Documents :</label> <br>
 
         <label for="consultedDoctor"> Consulted Doctor Name :</label>
         <table>
@@ -121,7 +118,7 @@
             <tr>
                 <td id="additonalInformation2"> </td>
             </tr>
-        </table> <br> -->
+        </table> <br>
 
         <h4>Upload New document</h4>
 
@@ -131,6 +128,6 @@
         </div> <br>
     
 </form>
-    
+
 </body>
 </html>

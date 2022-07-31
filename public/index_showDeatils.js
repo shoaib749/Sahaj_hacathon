@@ -17,16 +17,17 @@ const firebaseConfig = {
      measurementId: "G-SKFSHV7HP1"
 };
 
-const name = document.getElementById("patientName2");
-const gender = document.getElementById("patientGender2");
-const dob = document.getElementById("patientDOB2");
-const phone = document.getElementById("patientPhone2");
-const email = document.getElementById("patientEmalid2");
-const adhar = document.getElementById("patientAdhar2");
+const name = document.getElementById("name");
+const gender = document.getElementById("gender");
+const dob = document.getElementById("dob");
+const phone = document.getElementById("phno");
+const email = document.getElementById("email");
+const adhar = document.getElementById("aadhar");
 const bloodgroup = document.getElementById("bloodGroupInput");
-const guardianName = document.getElementById("patientGuardianName2");
-const guardianPhone = document.getElementById("guardianPhone2");
-const guardianEmail = document.getElementById("guardianEmail2");
+const guardianName = document.getElementById("gName");
+const guardianPhone = document.getElementById("gPhno");
+const guardianEmail = document.getElementById("gEmail");
+const submit = document.getElementById("save");
 const QR = document.getElementById("qrId");
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -36,8 +37,12 @@ import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/fireb
 const db = getDatabase();
 //storage
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-storage.js";
-
+// var url_string = window.location.href;
+// var url = new URL(url_string);
+// var c = url.searchParams.get("username");
+// console.log(c);
 const dbRef = ref(db);
+var docLink;
 get(child(dbRef, "PatientData/" + localStorage.getItem("username")))
          .then((snapshot) => {
                if (snapshot.exists()) {
@@ -78,4 +83,4 @@ async function downloadImage(imageSrc) {
      document.body.appendChild(link)
      link.click()
      document.body.removeChild(link)
-   }
+}
