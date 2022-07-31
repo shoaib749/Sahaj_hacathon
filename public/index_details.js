@@ -140,7 +140,7 @@ function saveUrlToDB(link) {
      var Dot=treatmentdate.value;
      var DiseaseCaused=diseasecaused.value;
      var AddInfo=additonalinformation.value;
-     console.log(CD_Name);
+     // console.log(CD_Name);
 
      var profileLink = UploadProcess_image();
      set(ref(db, "PatientData/" + localStorage.getItem("username")), {

@@ -52,10 +52,17 @@ get(child(dbRef, "PatientData/" + localStorage.getItem("username")))
                    guardianEmail.innerHTML = snapshot.val().GuardianEmail;
                    guardianPhone.innerHTML = snapshot.val().GuardianPhone;
                    QR.src= snapshot.val().QRlink; 
+                   showDocuments();
                }else{
                     alert("Error");
                }
          });
+
+         function showDocuments(){
+          var documents = document.getElementById('documents');
+          var embed = document.createElement('embed');
+          
+         }
 
 QR.onclick = function (){
      downloadImage(QR.src);
