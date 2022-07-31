@@ -204,7 +204,7 @@ function Validation() {
          alert("The Name should only contain alphabets!");
          return false
      }
-     if (!phoneregex.test(phone.value) && !phoneregex.test(guardianPhone.value) && phone==guardianName) {
+     if (!phoneregex.test(phone.value) && !phoneregex.test(guardianPhone.value) && phone==guardianPhone) {
          alert("Enter the valid phone number");
          return false;
      }
@@ -223,7 +223,10 @@ function Validation() {
           alert("Enter a valid blood group");
           return false;
       }
-
+      if(gender.value==null){
+          alert("Select the gender");
+          return false;
+      }
      //validation for gender are remaining
 
      return true;
