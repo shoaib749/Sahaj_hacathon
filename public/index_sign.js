@@ -32,9 +32,9 @@ const S_confirmPassword =  document.getElementById("confirmPasswordInput");
 S_submit.addEventListener('click',registerUser);
 function registerUser() {
     
-     // if(! Validation()){
-     //  return;
-     // }
+     if(! Validation()){
+      return;
+     }
       const dbRef = ref(db);
       get(child(dbRef, "PatientList/" +S_username.value))
           .then((snapshot) => {
@@ -65,4 +65,42 @@ function registerUser() {
      var pass12 = CryptoJS.AES.encrypt(S_password.value,S_password.value);
      return pass12.toString();
  }
+
+ function Validation() {
+    let nameregex = /^[a-zA-Z\s]+$/;
+    // let emailregex = /^[a-zA-Z0-9]+@$/;
+    // let userregex = /^[a-zA-Z0-9]{10,}$/;
+    // let userregex = /^[0-9]{10}$/;
+    let phoneregex=/^[0-9]{10}$/;
+    let passregex = /^[a-zA-Z0-9]{5,}$/;
+
+    if (isEmptyOrSpace(S_fullname.value) || isEmptyOrSpace(S_username.value) || isEmptyOrSpace(S_password.value) || isEmptyOrSpace(S_confirmPassword.value)) {
+        alert("Enter all the details ");
+        return false;
+    }
+    if (!nameregex.test(S_fullname.value)) {
+        alert("The Name should only contain alphabets!");
+        return false
+    }
+
+    if (!phoneregex.test(S_username.value)) {
+        alert("Enter a valid Phone Number");
+        return false;
+    }
+
+    if (!passregex.test(S_password.value)) {
+        alert("Enter a valid Password");
+        return false;
+    }
+
+    if(S_password.value!=S_confirmPassword.value){
+        alert("Enter a valid Password");
+        return false;
+    }
+    return true;
+}
+
+function isEmptyOrSpace(str) {
+    return str == null || str.match(/^ *$/) !== null;
+}
 

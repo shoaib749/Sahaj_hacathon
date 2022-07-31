@@ -52,6 +52,12 @@ B_select.onclick = function () {
      input.click();
 }
 submit.onclick = function () {
+     //Check for Validations
+     if(!Validation()){
+          // alert("Accepted");
+          console.log("Not Accepted");
+          return;
+     }
      UploadProcess();
      window.location = "showUserDetails.html";
 }
@@ -173,3 +179,58 @@ B_selct_profile.onclick = function(){
      input_2.click();
 }
 
+//Validations
+function Validation() {
+     let nameregex = /^[a-zA-Z\s]+$/;
+     let emailregex = /^[a-zA-Z0-9]+@$/;
+     // let userregex = /^[a-zA-Z0-9]{10,}$/;
+     // let userregex = /^[0-9]{10}$/;
+     let phoneregex=/^[0-9]{10}$/;
+     let passregex = /^[a-zA-Z0-9]{5,}$/;
+     let bloodregex=/^(A|B|AB|O)[+-]$/;
+     let adharregex=/^[0-9]{12}$/;
+     // let profileregex=/\.jpe?g$/i;
+ 
+     // if (isEmptyOrSpace(name.value) || isEmptyOrSpace(dob.value) || 
+     // isEmptyOrSpace(phone.value) || isEmptyOrSpace(email.value) || 
+     // isEmptyOrSpace(adhar.value) || isEmptyOrSpace(bloodgroup.value) ||
+     // isEmptyOrSpace(guardianName.value) || isEmptyOrSpace(guardianPhone.value) || 
+     // isEmptyOrSpace(guardianEmail.value)) {
+     //     alert("Enter all the details ");
+     //     return false;
+     // }
+
+     if (!nameregex.test(name.value) && !nameregex.test(guardianName.value)) {
+         alert("The Name should only contain alphabets!");
+         return false
+     }
+     if (!phoneregex.test(phone.value) && !phoneregex.test(guardianPhone.value)) {
+         alert("Enter the valid phone number");
+         return false;
+     }
+ 
+     if (!emailregex.test(email.value) && !emailregex.test(guardianEmail.value)) {
+         alert("Enter a valid email");
+         return false;
+     }
+ 
+     if(!adharregex.test(adhar.value)){
+         alert("Enter a valid adhar number");
+         return false;
+     }
+
+     if(!bloodregex.test(bloodgroup.value)){
+          alert("Enter a valid blood group");
+          return false;
+      }
+
+     //validation for gender are remaining
+
+     return true;
+ }
+ 
+ function isEmptyOrSpace(str) {
+     return str == null || str.match(/^ *$/) !== null;
+ }
+ 
+ 

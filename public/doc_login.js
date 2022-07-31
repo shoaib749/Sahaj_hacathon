@@ -36,6 +36,9 @@ function authDoctor(){
      //     alert("Enter username and Password");
      //     return;
      // }
+     if(!Validation()){
+        return;
+     }
      get(child(dbRef, "DoctorList/" + L_username.value))
          .then((snapshot) => {
              if (snapshot.exists()) {
@@ -63,3 +66,37 @@ function authDoctor(){
      var pass12 = CryptoJS.AES.decrypt(pass,L_password.value);
      return pass12.toString(CryptoJS.enc.Utf8);
  }
+
+ 
+ function Validation() {
+    // let nameregex = /^[a-zA-Z\s]+$/;
+    // let emailregex = /^[a-zA-Z0-9]+@$/;
+    let userregex = /^[a-zA-Z0-9]{10}$/;
+    // let userregex = /^[0-9]{10}$/;
+
+    if (isEmptyOrSpace(L_username.value) || isEmptyOrSpace(L_password.value)) {
+        alert("Enter Correct Username and Password ");
+        return false;
+    }
+    // if (!nameregex.test(L_username.value)) {
+    //     alert("The Name should only contain alphabets!");
+    //     return false
+    // }
+
+    // if (!emailregex.test(email.value)) {
+    //     alert("Enter a valid emailId");
+    //     return false;
+    // }
+    // if (!userregex.test(L_username.val)) {
+    //     alert("Enter a valid username");
+    //     return false;
+    // }
+    // else{
+    //     return true;
+    // }
+    return true;
+}
+
+function isEmptyOrSpace(str) {
+    return str == null || str.match(/^ *$/) !== null;
+}
