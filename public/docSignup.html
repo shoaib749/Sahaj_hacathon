@@ -22,8 +22,14 @@
                                 <label for="password">Confirm Password:</label> <input type="password"
                                         id="passwordInput"> <br>
                                 <button id="signButton" type="button">Sign Up</button> <br>
-                                <button><a href="index.html">Login</a></button> <br>
+                                <button type="button" id="docBackToLoginButton"> Back to Login</button> <br>
                         </form>
                 </div>
         </div>
+        <script>
+                var loginButton = document.getElementById('docBackToLoginButton');
+                loginButton.addEventListener('click',()=>{
+                        window.location = 'docLogin.html';
+                })
+        </script>
 </body>

@@ -1,11 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
      apiKey: "AIzaSyAG5iICEez2P75v-hAWJb4wPBfB-CP15OI",
      authDomain: "dums-d3398.firebaseapp.com",
@@ -44,7 +40,7 @@ const submit = document.getElementById("save");
 //
 const imgProfile = document.getElementById("proPicholder");
 const B_selct_profile = document.getElementById("selPropic");
-//buttons for chosing 
+//buttons for choosing 
 const B_select = document.getElementById("selectButton");
 const DocName = document.getElementById("fileName");
 
@@ -66,7 +62,7 @@ input.onchange = e => {
 }
 
 //genrating QR code 
-function  generate() {
+function generate() {
      var data = email.value;
      console.log(data);
      var url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data}`;
@@ -77,14 +73,14 @@ async function downloadImage(imageSrc) {
      const image = await fetch(imageSrc)
      const imageBlog = await image.blob()
      const imageURL = URL.createObjectURL(imageBlog)
-   
+
      const link = document.createElement('a')
      link.href = imageURL
      link.download = localStorage.getItem("username");
      document.body.appendChild(link)
      link.click()
      document.body.removeChild(link)
-   }
+}
 
 //testing for async upload function
 async function UploadProcess() {
@@ -114,7 +110,7 @@ async function UploadProcess() {
 }
 function saveUrlToDB(link) {
      var D_name = name.value;
-    // var D_gender = gender.value;
+     // var D_gender = gender.value;
      var D_dob = dob.value;
      var D_email = email.value;
      var D_adhar = adhar.value;
@@ -126,15 +122,15 @@ function saveUrlToDB(link) {
 
      set(ref(db, "PatientData/" + localStorage.getItem("username")), {
           Name: D_name,
-         // Gender : D_gender,
-          Email : D_email,
-          DOB : D_dob,
-          Addhar : D_adhar,
-          Bloodgroup : D_bloodgroup,
-          GuardianEmail : D_guardianEmail,
-          GuardianPhone:D_guardianPhone,
-          guardianName:D_guardianName,
-          PhoneNo:D_phoneNo,
+          // Gender : D_gender,
+          Email: D_email,
+          DOB: D_dob,
+          Addhar: D_adhar,
+          Bloodgroup: D_bloodgroup,
+          GuardianEmail: D_guardianEmail,
+          GuardianPhone: D_guardianPhone,
+          guardianName: D_guardianName,
+          PhoneNo: D_phoneNo,
           QRlink: generate(),
           DocLink: link
      });
@@ -154,22 +150,22 @@ function GetFileName(file) {
 }
 
 //for profile picture
-var input_2 = document.createElement('input');
-input_2.type = 'file';
-input_2.onchange = e => {
-    pic = e.target.pic;
-//     var extension = GetFileExt(files[0]);
-//     var name = GetFileName(files[0]);
-//     namebox.value = name;
-//     ext.innerHTML = extension;
-    reader.readAsDataURL(pic[0]);
-    console.log(pic[0]);
-}
+var proPicInput = document.createElement('input');
+proPicInput.type = 'file';
+proPicInput.addEventListener('change', (e) => {
+     pic = e.target.pic;
+     reader.readAsDataURL(pic[0]);
+     //     var extension = GetFileExt(files[0]);
+     //     var name = GetFileName(files[0]);
+     //     namebox.value = name;
+     //     ext.innerHTML = extension;
+})
+
+
 reader.onload = function () {
-//     imgProfile.setAttribute('src',reader.result);
-      imgProfile.src = reader.result;
+     imgProfile.src = reader.result;
 }
-B_selct_profile.onclick = function(){
-     input_2.click();
+B_selct_profile.onclick = function () {
+     proPicInput.click();
 }
 
