@@ -57,3 +57,13 @@ input {
 #selectButton{
     margin-top: 20px;
 }
+
+.uploadedDocuments{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+embed{
+    margin-top: 20px;
+}
