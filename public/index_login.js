@@ -62,20 +62,21 @@ function authUser(){
  function login(user){
     const dbRef = getDatabase();
     var flag ;
+    window.location="Details.html";
      sessionStorage.setItem('user',JSON.stringify(user));
-     get(child(dbRef,"PatientList/"+L_username.value))
-     .then((snapshot)=>{
-        if(flag == 0){
-            window.location="Details.html";
-        }else{
-            update(ref(db,"PatientList/" + L_username.value),{
-                flag : 1
-            }).then(()=>{
-                console.log(flag);
-            })
-            window.location="showUserDetails.html";
-        }
-     })
+    //  get(child(dbRef,"PatientList/"+L_username.value))
+    //  .then((snapshot)=>{
+    //     if(flag == 0){
+    //         window.location="Details.html";
+    //     }else{
+    //         update(ref(db,"PatientList/" + L_username.value),{
+    //             flag : 1
+    //         }).then(()=>{
+    //             console.log(flag);
+    //         })
+    //         window.location="showUserDetails.html";
+    //     }
+    //  })
      
  }
  
