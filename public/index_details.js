@@ -65,8 +65,8 @@ submit.onclick = function () {
      //      return;
      // }
      UploadProcess_image();
-     UploadProcess();
-     window.location = "showUserDetails.html";
+      UploadProcess();
+    window.location = "showUserDetails.html";
 }
 var input = document.createElement('input');
 input.type = 'file';

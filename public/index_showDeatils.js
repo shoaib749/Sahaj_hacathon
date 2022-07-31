@@ -17,16 +17,16 @@ const firebaseConfig = {
      measurementId: "G-SKFSHV7HP1"
 };
 
-const name = document.getElementById("patientName2");
-const gender = document.getElementById("patientGender2");
-const dob = document.getElementById("patientDOB2");
-const phone = document.getElementById("patientPhone2");
-const email = document.getElementById("patientEmalid2");
-const adhar = document.getElementById("patientAdhar2");
+const name = document.getElementById("name");
+const gender = document.getElementById("gender");
+const dob = document.getElementById("dob");
+const phone = document.getElementById("phno");
+const email = document.getElementById("email");
+const adhar = document.getElementById("aadhar");
 const bloodgroup = document.getElementById("bloodGroupInput");
-const guardianName = document.getElementById("patientGuardianName2");
-const guardianPhone = document.getElementById("guardianPhone2");
-const guardianEmail = document.getElementById("guardianEmail2");
+const guardianName = document.getElementById("gName");
+const guardianPhone = document.getElementById("gPhno");
+const guardianEmail = document.getElementById("gEmail");
 const submit = document.getElementById("save");
 const QR = document.getElementById("qrId");
 // Initialize Firebase
@@ -47,7 +47,7 @@ get(child(dbRef, "PatientData/" + localStorage.getItem("username")))
          .then((snapshot) => {
                if (snapshot.exists()) {
                    adhar.innerHTML = snapshot.val().Addhar;
-               //     console.log(snapshot.val().Addhar);
+                   console.log(snapshot.val().Addhar);
                    email.innerHTML = snapshot.val().Email;
                //     bloodgroup.innerHTML = snapshot.val().Bloodgroup;
                    dob.innerHTML = snapshot.val().DOB;
