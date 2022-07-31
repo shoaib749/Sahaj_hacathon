@@ -223,7 +223,7 @@ function Validation() {
           alert("Enter a valid blood group");
           return false;
       }
-      if(gender.value==null){
+      if(document.querySelector('input[name="gender"]:checked').value==false){
           alert("Select the gender");
           return false;
       }
