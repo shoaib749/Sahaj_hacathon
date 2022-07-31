@@ -44,6 +44,7 @@ const submit = document.getElementById("save");
 //
 const imgProfile = document.getElementById("proPicholder");
 const B_selct_profile = document.getElementById("selPropic");
+const image = document.getElementById("proPic");
 //buttons for chosing 
 const B_select = document.getElementById("selectButton");
 const DocName = document.getElementById("fileName");
@@ -59,7 +60,10 @@ submit.onclick = function () {
           return;
      }
      UploadProcess();
-     window.location = "showUserDetails.html";
+     // window.location = "showUserDetails.html";
+     UploadProcess_image();
+      UploadProcess();
+    // window.location = "showUserDetails.html";
 }
 var input = document.createElement('input');
 input.type = 'file';
@@ -129,7 +133,7 @@ function saveUrlToDB(link) {
      var D_guardianPhone = guardianPhone.value;
      var D_guardianEmail = guardianEmail.value;
      var D_phoneNo = phone.value;
-
+     var profileLink = UploadProcess_image();
      set(ref(db, "PatientData/" + localStorage.getItem("username")), {
           Name: D_name,
          // Gender : D_gender,
@@ -142,10 +146,42 @@ function saveUrlToDB(link) {
           guardianName:D_guardianName,
           PhoneNo:D_phoneNo,
           QRlink: generate(),
-          DocLink: link
+          DocLink: link,
+          ProfilePic : profileLink 
+     })
+     .then(()=>{
+          alert("Data Added successfully");
+     })
+     .catch((error) =>{
+          alert(error);
      });
 }
+async function UploadProcess_image() {
+     var Doc = image;
+     // var Name = DocName.innerHTML;
+     const metaData = {
+          contentType: Doc.type
+     }
 
+     const storage = getStorage();
+     const storageRef = sRef(storage, localStorage.getItem("username/") + "profilePic" );
+     const UploadTask = uploadBytesResumable(storageRef, Doc, metaData);
+     UploadTask.on('state-change', (snapshot) => {
+          //     var progress_spinner = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          //     progress.innerHTML = "Upload " + progress_spinner + "%";
+     },
+          (error) => {
+               alert("Error in upload");
+          },
+          () => {
+               getDownloadURL(UploadTask.snapshot.ref)
+                    .then((downloadURL) => {
+                         console.log(downloadURL);
+                         // saveUrlToDB(downloadURL);
+                         return downloadURL;
+                    });
+          });
+}
 
 function GetFileExt(file) {
      var temp = file.name.split('.');

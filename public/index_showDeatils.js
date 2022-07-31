@@ -28,7 +28,7 @@ const guardianName = document.getElementById("gName");
 const guardianPhone = document.getElementById("gPhno");
 const guardianEmail = document.getElementById("gEmail");
 const submit = document.getElementById("save");
-
+const QR = document.getElementById("qrId");
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
@@ -37,12 +37,21 @@ import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/fireb
 const db = getDatabase();
 //storage
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-storage.js";
-
-const dbRef = ref(db);
-get(child(dbRef,"PatientData/" + localStorage.getItem("username"))
-.then((snapshot)=>{
-     if(snapshot.exists()){
-          snapshot.val().Addhar;
-          
-     }
-}))
+function getData() {
+     const dbRef = ref(db);
+     get(child(dbRef, "PatientData/" + localStorage.getItem("username"))
+          .then((snapshot) => {
+               if (snapshot.exists()) {
+                   adhar.value = snapshot.val().Addhar;
+                   email.value = snapshot.val().Email;
+                   bloodgroup.value = snapshot.val().Bloodgroup;
+                   dob.value = snapshot.val().DOB;
+                   name.value = snapshot.val().Name;
+                   phone.value = snapshot.val().PhoneNo;
+                   guardianName.value = snapshot.val().guardianName;
+                   guardianEmail.value = snapshot.val().GuardianEmail;
+                   guardianPhone.value = snapshot.val().GuardianPhone;
+                   QR.src= snapshot.val(). 
+               }
+          }))
+}
