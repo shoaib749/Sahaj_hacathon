@@ -40,6 +40,11 @@ const guardianPhone = document.getElementById("guardianPhoneInput");
 const guardianEmail = document.getElementById("guardianEmailInput");
 const submit = document.getElementById("save");
 
+//
+const consultdoctor=document.getElementById("consultedDoctorInput");
+const dot=document.getElementById("treatmentDateInput");
+const disCause=document.getElementById("diseaseCausedInput");
+const AddInfo=document.getElementById("additonalInformationInput");
 
 //
 const imgProfile = document.getElementById("proPicholder");
@@ -59,11 +64,11 @@ submit.onclick = function () {
      //      console.log("Not Accepted");
      //      return;
      // }
-     UploadProcess();
+     // UploadProcess();
      // window.location = "showUserDetails.html";
      UploadProcess_image();
       UploadProcess();
-    // window.location = "showUserDetails.html";
+    window.location = "showUserDetails.html";
 }
 var input = document.createElement('input');
 input.type = 'file';
@@ -134,10 +139,10 @@ function saveUrlToDB(link) {
      var D_guardianPhone = guardianPhone.value;
      var D_guardianEmail = guardianEmail.value;
      var D_phoneNo = phone.value;
-     var CD_Name=consultDoctor.value;
-     var Dot=treatmentdate.value;
-     var DiseaseCaused=diseasecaused.value;
-     var AddInfo=additonalinformation.value;
+     var CD_name=consultdoctor.value;
+     var Dateoftreat=dot.value;
+     var DisCause=disCause.value;
+   //  var AddiInfo=AddInfo.value;
      // console.log(CD_Name);
 
      var profileLink = UploadProcess_image();
@@ -154,7 +159,11 @@ function saveUrlToDB(link) {
           PhoneNo:D_phoneNo,
           QRlink: generate(),
           DocLink: link,
-          ProfilePic : profileLink 
+          ProfilePic : profileLink,
+          ConsultDoctor:CD_name,
+          DateofTreatment:Dateoftreat,
+          DiseaseCause:DisCause
+         // AdditionalInformation:AddiInfo 
      })
      .then(()=>{
           alert("Data Added successfully");
