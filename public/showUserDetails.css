@@ -6,10 +6,6 @@ img {
     border-radius: 50%;
   }
 
-#qrId{
-    border-radius: 0%;
-}
-
 form{
     border: 1px solid black;
     display: flex;

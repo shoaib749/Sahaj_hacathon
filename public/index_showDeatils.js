@@ -17,16 +17,17 @@ const firebaseConfig = {
      measurementId: "G-SKFSHV7HP1"
 };
 
-const name = document.getElementById("patientName2");
-const gender = document.getElementById("patientGender2");
-const dob = document.getElementById("patientDOB2");
-const phone = document.getElementById("patientPhone2");
-const email = document.getElementById("patientEmalid2");
-const adhar = document.getElementById("patientAdhar2");
+const name = document.getElementById("name");
+const gender = document.getElementById("gender");
+const dob = document.getElementById("dob");
+const phone = document.getElementById("phno");
+const email = document.getElementById("email");
+const adhar = document.getElementById("aadhar");
 const bloodgroup = document.getElementById("bloodGroupInput");
-const guardianName = document.getElementById("patientGuardianName2");
-const guardianPhone = document.getElementById("guardianPhone2");
-const guardianEmail = document.getElementById("guardianEmail2");
+const guardianName = document.getElementById("gName");
+const guardianPhone = document.getElementById("gPhno");
+const guardianEmail = document.getElementById("gEmail");
+const submit = document.getElementById("save");
 const QR = document.getElementById("qrId");
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -36,39 +37,21 @@ import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/fireb
 const db = getDatabase();
 //storage
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-storage.js";
-
-const dbRef = ref(db);
-get(child(dbRef, "PatientData/" + localStorage.getItem("username")))
-         .then((snapshot) => {
+function getData() {
+     const dbRef = ref(db);
+     get(child(dbRef, "PatientData/" + localStorage.getItem("username"))
+          .then((snapshot) => {
                if (snapshot.exists()) {
-                   adhar.innerHTML = snapshot.val().Addhar;
-                   console.log(snapshot.val().Addhar);
-                   email.innerHTML = snapshot.val().Email;
-               //     bloodgroup.innerHTML = snapshot.val().Bloodgroup;
-                   dob.innerHTML = snapshot.val().DOB;
-                   name.innerHTML = snapshot.val().Name;
-                   phone.innerHTML = snapshot.val().PhoneNo;
-                   guardianName.innerHTML = snapshot.val().guardianName;
-                   guardianEmail.innerHTML = snapshot.val().GuardianEmail;
-                   guardianPhone.innerHTML = snapshot.val().GuardianPhone;
-                   QR.src= snapshot.val().QRlink; 
-               }else{
-                    alert("Error");
+                   adhar.value = snapshot.val().Addhar;
+                   email.value = snapshot.val().Email;
+                   bloodgroup.value = snapshot.val().Bloodgroup;
+                   dob.value = snapshot.val().DOB;
+                   name.value = snapshot.val().Name;
+                   phone.value = snapshot.val().PhoneNo;
+                   guardianName.value = snapshot.val().guardianName;
+                   guardianEmail.value = snapshot.val().GuardianEmail;
+                   guardianPhone.value = snapshot.val().GuardianPhone;
+                   QR.src= snapshot.val(). 
                }
-         });
-
-QR.onclick = function (){
-     downloadImage(QR.src);
+          }))
 }
-async function downloadImage(imageSrc) {
-     const image = await fetch(imageSrc)
-     const imageBlog = await image.blob()
-     const imageURL = URL.createObjectURL(imageBlog)
-   
-     const link = document.createElement('a')
-     link.href = imageURL
-     link.download = localStorage.getItem("username");
-     document.body.appendChild(link)
-     link.click()
-     document.body.removeChild(link)
-   }
