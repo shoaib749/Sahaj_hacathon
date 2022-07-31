@@ -37,21 +37,40 @@ import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/fireb
 const db = getDatabase();
 //storage
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-storage.js";
-function getData() {
-     const dbRef = ref(db);
-     get(child(dbRef, "PatientData/" + localStorage.getItem("username"))
-          .then((snapshot) => {
+// var url_string = window.location.href;
+// var url = new URL(url_string);
+// var c = url.searchParams.get("username");
+// console.log(c);
+const dbRef = ref(db);
+var docLink;
+get(child(dbRef, "PatientData/" + localStorage.getItem("username")))
+         .then((snapshot) => {
                if (snapshot.exists()) {
-                   adhar.value = snapshot.val().Addhar;
-                   email.value = snapshot.val().Email;
-                   bloodgroup.value = snapshot.val().Bloodgroup;
-                   dob.value = snapshot.val().DOB;
-                   name.value = snapshot.val().Name;
-                   phone.value = snapshot.val().PhoneNo;
-                   guardianName.value = snapshot.val().guardianName;
-                   guardianEmail.value = snapshot.val().GuardianEmail;
-                   guardianPhone.value = snapshot.val().GuardianPhone;
-                   QR.src= snapshot.val(). 
+                   adhar.innerHTML = snapshot.val().Addhar;
+                   console.log(snapshot.val().Addhar);
+                   email.innerHTML = snapshot.val().Email;
+               //     bloodgroup.innerHTML = snapshot.val().Bloodgroup;
+                   dob.innerHTML = snapshot.val().DOB;
+                   name.innerHTML = snapshot.val().Name;
+                   phone.innerHTML = snapshot.val().PhoneNo;
+                   guardianName.innerHTML = snapshot.val().guardianName;
+                   guardianEmail.innerHTML = snapshot.val().GuardianEmail;
+                   guardianPhone.innerHTML = snapshot.val().GuardianPhone;
+                   QR.src= snapshot.val().QRlink; 
+                   docLink = snapshot.val().DocLink;
+               }else{
+                    alert("Error");
                }
-          }))
+          })
+async function downloadImage(imageSrc) {
+     const image = await fetch(imageSrc)
+     const imageBlog = await image.blob()
+     const imageURL = URL.createObjectURL(imageBlog)
+   
+     const link = document.createElement('a')
+     link.href = imageURL
+     link.download = localStorage.getItem("username");
+     document.body.appendChild(link)
+     link.click()
+     document.body.removeChild(link)
 }

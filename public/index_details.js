@@ -77,7 +77,8 @@ input.onchange = e => {
 
 //genrating QR code 
 function  generate() {
-     var data = email.value;
+     var type_url = `https://dums-d3398.web.app/showUserDetails.html?username=${localStorage.getItem("username")}`;
+     var data = type_url;
      console.log(data);
      var url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data}`;
      console.log(url);
